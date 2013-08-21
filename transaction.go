@@ -1,23 +1,23 @@
 package main
 
 import (
+	"etlog/encoding"
+	"etlog/stores"
+	"labix.org/v2/mgo/bson"
 	"time"
-    "labix.org/v2/mgo/bson"
-    "etlog/stores"
-    "etlog/encoding"
 )
 
 type Transaction struct {
-    Id bson.ObjectId `json:"_id,omitempty" bson:"_id,omitempty"`
+	Id bson.ObjectId `json:"_id,omitempty" bson:"_id,omitempty"`
 
 	// Timestamp of when the transaction occurred
 	Timestamp time.Time `json:"timestamp,omitempty" bson:"timestamp,omitempty"`
 
 	// The action that was performed on the target. This may not be
-    // applicable or available depending on what operation the script is
-    // performing. The value is generally target-specific; for example,
-    // insert and delete for row-based operations, append for file-based
-    // writing, pop for a Redis list, etc.
+	// applicable or available depending on what operation the script is
+	// performing. The value is generally target-specific; for example,
+	// insert and delete for row-based operations, append for file-based
+	// writing, pop for a Redis list, etc.
 	Action string `json:"action,omitempty" bson:"action,omitempty"`
 
 	// An object representing the script used that performed the ETL and
@@ -38,10 +38,10 @@ type Transaction struct {
 
 // Satisfies the `json.Marshaler` interface
 func (t *Transaction) MarshalJSON() ([]byte, error) {
-    return encoding.MarshalJSON(t)
+	return encoding.MarshalJSON(t)
 }
 
 // Satisfies the `json.Unmarshaler` interface
 func (t *Transaction) UnmarshalJSON(b []byte) error {
-    return encoding.UnmarshalJSON(b, t)
+	return encoding.UnmarshalJSON(b, t)
 }

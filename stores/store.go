@@ -1,20 +1,20 @@
 package stores
 
 import (
-    "etlog/encoding"
-    "labix.org/v2/mgo/bson"
+	"etlog/encoding"
+	"labix.org/v2/mgo/bson"
 )
 
 // Base which contains general information about the store
 type Store struct {
-    // Represents the Mongo ID
-    Id bson.ObjectId `json:"-" bson:"_id,omitempty"`
+	// Represents the Mongo ID
+	Id bson.ObjectId `json:"-" bson:"_id,omitempty"`
 
 	// URI which denotes where the data lives, where came from (streamed) or
 	// where can be accessed in the future. The latter value is preferred
 	// since it theoretically enables future access. The completeness and
 	// value of this is store dependent.
-    Uri string `json:"uri,omitempty" bson:"uri,omitempty"`
+	Uri string `json:"uri,omitempty" bson:"uri,omitempty"`
 
 	// The store type as a string. This is used when messages are parsed and
 	// for downstream processing. If not defined, the type will attempted to
@@ -28,7 +28,7 @@ type Store struct {
 	// in store data. However, for systems that treat this as an audit log or
 	// if the target system does not perform an versioning of data of it's
 	// own, this could act as primitive store of values.
-    Value interface{} `json:"value,omitempty" bson:"value,omitempty"`
+	Value interface{} `json:"value,omitempty" bson:"value,omitempty"`
 
 	// Extra data from decoded JSON. This enables clients to store additional
 	// metadata about the store.
@@ -37,10 +37,10 @@ type Store struct {
 
 // Satisfies the `json.Marshaler` interface
 func (s *Store) MarshalJSON() ([]byte, error) {
-    return encoding.MarshalJSON(s)
+	return encoding.MarshalJSON(s)
 }
 
 // Satisfies the `json.Unmarshaler` interface
 func (s *Store) UnmarshalJSON(b []byte) error {
-    return encoding.UnmarshalJSON(b, s)
+	return encoding.UnmarshalJSON(b, s)
 }

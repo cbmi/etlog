@@ -1,10 +1,10 @@
 package services
 
 import (
-    "testing"
+	"etlog/encoding"
+	"github.com/cojac/assert"
 	"labix.org/v2/mgo"
-    "github.com/cojac/assert"
-    "etlog/encoding"
+	"testing"
 )
 
 type Message struct {
@@ -12,9 +12,9 @@ type Message struct {
 }
 
 func TestInsertDoc(t *testing.T) {
-    d := Message{}
+	d := Message{}
 
-    encoding.UnmarshalJSON([]byte(`
+	encoding.UnmarshalJSON([]byte(`
         {
             "_id": 1,
             "timestamp": "2013-08-13T05:43:03.32344",
@@ -42,22 +42,22 @@ func TestInsertDoc(t *testing.T) {
         }
     `), &d)
 
-    insertDoc(&d)
+	insertDoc(&d)
 
-    mongoHost := "0.0.0.0:27017"
+	mongoHost := "0.0.0.0:27017"
 
-    s, _ := mgo.Dial(mongoHost)
-    defer s.Close()
+	s, _ := mgo.Dial(mongoHost)
+	defer s.Close()
 
-    // Insert the data into the collection
-    c := s.DB("etlog").C("logs")
+	// Insert the data into the collection
+	c := s.DB("etlog").C("logs")
 
-    // Retrieve message
-    var r []Message
-    c.FindId(1).All(&r)
+	// Retrieve message
+	var r []Message
+	c.FindId(1).All(&r)
 
-    assert.Equal(t, 1, len(r))
+	assert.Equal(t, 1, len(r))
 
-    _, ok := r[0].Extra["source"]
-    assert.True(t, ok)
+	_, ok := r[0].Extra["source"]
+	assert.True(t, ok)
 }

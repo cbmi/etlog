@@ -1,8 +1,8 @@
 package encoding
 
 import (
-    "encoding/json"
-    "labix.org/v2/mgo/bson"
+	"encoding/json"
+	"labix.org/v2/mgo/bson"
 )
 
 // This encodes it as bson as an intermediate step to take advantage of the
@@ -10,10 +10,10 @@ import (
 // to `json.Marshal`.
 // See: http://godoc.org/labix.org/v2/mgo/bson#Marshal
 func MarshalJSON(v interface{}) ([]byte, error) {
-    var j interface{}
-    b, _ := bson.Marshal(v)
-    bson.Unmarshal(b, &j)
-    return json.Marshal(&j)
+	var j interface{}
+	b, _ := bson.Marshal(v)
+	bson.Unmarshal(b, &j)
+	return json.Marshal(&j)
 }
 
 // This decodes it as json into an intermediate map, encodes it into BSON,
@@ -22,8 +22,8 @@ func MarshalJSON(v interface{}) ([]byte, error) {
 // `json.Unmarshal`
 // See: http://godoc.org/labix.org/v2/mgo/bson#Marshal
 func UnmarshalJSON(b []byte, v interface{}) error {
-    var j map[string]interface{}
-    json.Unmarshal(b, &j)
-    b, _ = bson.Marshal(&j)
-    return bson.Unmarshal(b, v)
+	var j map[string]interface{}
+	json.Unmarshal(b, &j)
+	b, _ = bson.Marshal(&j)
+	return bson.Unmarshal(b, v)
 }
