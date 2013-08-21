@@ -1,4 +1,4 @@
-package main
+package etlog
 
 import (
 	"etlog/encoding"
