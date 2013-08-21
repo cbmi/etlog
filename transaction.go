@@ -1,8 +1,8 @@
 package etlog
 
 import (
-	"etlog/encoding"
-	"etlog/stores"
+	"github.com/cbmi/etlog/encoding"
+	"github.com/cbmi/etlog/stores"
 	"labix.org/v2/mgo/bson"
 	"time"
 )

@@ -1,7 +1,7 @@
 package etlog
 
 import (
-	"etlog/encoding"
+	"github.com/cbmi/etlog/encoding"
 )
 
 type Script struct {

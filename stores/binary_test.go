@@ -2,16 +2,22 @@ package stores
 
 import (
 	"testing"
-	//"encoding/json"
-//	"labix.org/v2/mgo"
-//    "github.com/cojac/assert"
+    /*
+	"github.com/cojac/assert"
+    "github.com/cbmi/etlog/encoding"
+    */
 )
 
 func TestBinaryMarshal(t *testing.T) {
-	/*
-	   s := &Binary{
-	       Name: "binary.dat",
-	   }
-	   json.Marshal
-	*/
+    /*
+    s := Binary{
+        File: File{
+            Name: "binary.dat",
+        },
+        Bytes: "",
+	}
+
+   b, _ := encoding.MarshalJSON(&s)
+   assert.Equal(t, string(b), `{"name":"binary.dat"}`)
+   */
 }

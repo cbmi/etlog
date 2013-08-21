@@ -1,7 +1,7 @@
 package stores
 
 import (
-	"etlog/encoding"
+	"github.com/cbmi/etlog/encoding"
 	"labix.org/v2/mgo/bson"
 )
 
