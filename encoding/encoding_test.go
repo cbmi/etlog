@@ -1,7 +1,7 @@
 package encoding
 
 import (
-	"github.com/cojac/assert"
+	"github.com/bruth/assert"
 	"testing"
 )
 

@@ -2,7 +2,7 @@ package stores
 
 import (
 	"encoding/json"
-	"github.com/cojac/assert"
+	"github.com/bruth/assert"
 	"testing"
 )
 

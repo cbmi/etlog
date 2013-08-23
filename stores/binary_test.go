@@ -3,7 +3,7 @@ package stores
 import (
 	"testing"
     /*
-	"github.com/cojac/assert"
+	"github.com/bruth/assert"
     "github.com/cbmi/etlog/encoding"
     */
 )
